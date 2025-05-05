@@ -37,7 +37,7 @@ class _DailySummaryScreenState extends State<DailySummaryScreen> {
   void updateGroupTargets() {
     final deltaWeight = weight - 190;
     final int k = (deltaWeight / 5).round();
-    final adjustedCalories = 2350 + (-75 * k);
+    final adjustedCalories = 2350 + (75 * k);
 
     baseCalories = adjustedCalories.toDouble();
 
