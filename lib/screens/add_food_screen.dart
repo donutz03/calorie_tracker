@@ -18,12 +18,12 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
 
   double _calculatedKcal = 0.0;
 
-  final List<String> _groups = [
-    'Meat',
-    'Milk',
-    'Fruits & Veggies',
-    'Bread & Cereal',
-  ];
+final List<String> _groups = [
+  'Meat',
+  'Nuts', // schimbat din 'Milk'
+  'Fruits & Veggies',
+  'Rice & Rice Cakes & Oat', // schimbat din 'Bread & Cereal'
+];
 
   void _calculateCalories() {
     final grams = double.tryParse(_gramsController.text) ?? 0;

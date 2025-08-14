@@ -42,19 +42,19 @@ class _DailySummaryScreenState extends State<DailySummaryScreen> {
     baseCalories = adjustedCalories.toDouble();
 
     final scalingFactor = baseCalories / 1600;
-    groupTargets = {
-      'Meat': (300 * scalingFactor),
-      'Milk': (350 * scalingFactor),
-      'Fruits & Veggies': (600 * scalingFactor),
-      'Bread & Cereal': (350 * scalingFactor),
-    };
+groupTargets = {
+  'Meat': (300 * scalingFactor),
+  'Nuts': (350 * scalingFactor), // schimbat din 'Milk'
+  'Fruits & Veggies': (600 * scalingFactor),
+  'Rice & Rice Cakes & Oat': (350 * scalingFactor), // schimbat din 'Bread & Cereal'
+};
 
     groupTotals = {
-      'Meat': 0,
-      'Milk': 0,
-      'Fruits & Veggies': 0,
-      'Bread & Cereal': 0,
-    };
+  'Meat': 0,
+  'Nuts': 0, // schimbat din 'Milk'
+  'Fruits & Veggies': 0,
+  'Rice & Rice Cakes & Oat': 0, // schimbat din 'Bread & Cereal'
+};
   }
 
   Future<void> loadData() async {
@@ -74,8 +74,8 @@ class _DailySummaryScreenState extends State<DailySummaryScreen> {
     for (var item in filteredFoods) {
       final group = item['group'];
       final kcal = item['totalKcal'] ?? 0;
-      final isIceCream = (item['name'] as String).toLowerCase().contains('ice cream');
-      if (isMonday && isIceCream) continue;
+      final isNuga = (item['name'] as String).toLowerCase().contains('nuga');
+      if (isMonday && isNuga) continue;
 
       if (groupTotals.containsKey(group)) {
         groupTotals[group] = groupTotals[group]! + kcal;
@@ -131,7 +131,7 @@ class _DailySummaryScreenState extends State<DailySummaryScreen> {
               Column(
                 children: [
                   const Text(
-                    '🍦 Azi e ziua de înghețată – savurează în liniște!',
+                    '🍫 Azi e ziua de Nutella vegan și Nuga – savurează în liniște!',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 10),
